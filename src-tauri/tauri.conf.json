@@ -1,0 +1,46 @@
+{
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "File Explorer",
+    "version": "0.0.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "at.pfeifer.file-explorer",
+      "icon": [
+        "icons/folder.png",
+        "icons/folder.ico",
+        "icons/folder.icns"
+      ]
+    },
+    "security": {
+      "csp": null
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "File Explorer",
+        "width": 800,
+        "height": 600,
+        "label": "main",
+        "visible": false
+      }
+    ]
+  }
+}
