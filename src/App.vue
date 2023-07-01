@@ -31,6 +31,7 @@ export default defineComponent({
         updateEntries: function () {
             invoke("entries", {path: this.getPathAsString}).then(value => {
                 this.entries = value as EntryDescriptor[];
+                (this.$refs.entryItems as HTMLElement).scrollTo(0,0);
             })
         },
         moveIntoDirectory: function (name: string) {
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <template>
     <div id="app-content">
         <path-selector :path="path" @path-changed="updateEntries"></path-selector>
-        <div id="entryList">
+        <div id="entryList" ref="entryItems">
             <Disk v-if="path.length===0" v-for="disk in disks" :disk="disk"
                   @selected="(name) => selectDisk(name)"></Disk>
             <Entry v-else v-for="entry in entries" :entry="entry" :path="getPathAsString" @selected="(name) => moveIntoDirectory(name)"></Entry>
